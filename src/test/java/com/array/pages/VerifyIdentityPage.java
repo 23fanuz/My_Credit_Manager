@@ -5,10 +5,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.beans.Visibility;
+import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class VerifyIdentityPage {
 
@@ -148,7 +156,37 @@ public class VerifyIdentityPage {
         return secondSSNTextBox;
     }
 
+    private WebElement lastSubmitButton;
 
+    public WebElement getLastSubmitButton() {
+
+        SearchContext shadow = Driver.getDriver().findElement(By.cssSelector("array-account-enroll[appkey='60CDFC3B-188E-41B8-A475-D495CC4645F2']")).getShadowRoot();
+
+       lastSubmitButton = shadow.findElement(By.cssSelector(".svelte-tb0h00.arr-stretch"));
+        return lastSubmitButton;
+    }
+
+    private WebElement questionnaireHeading;
+
+    public WebElement getQuestionnaireHeading() throws InterruptedException {
+
+
+        Thread.sleep(1000);
+        SearchContext shadow0 = Driver.getDriver().findElement(By.cssSelector("array-account-enroll[appkey='60CDFC3B-188E-41B8-A475-D495CC4645F2']")).getShadowRoot();
+
+
+        Thread.sleep(1000);
+        SearchContext shadow1 = shadow0.findElement(By.cssSelector("array-authentication-kba[appkey='60CDFC3B-188E-41B8-A475-D495CC4645F2']")).getShadowRoot();
+
+        Thread.sleep(1000);
+
+        shadow1.findElement(By.cssSelector(" style:nth-child(1)"));
+
+
+      questionnaireHeading =  shadow1.findElement(By.cssSelector(".arr-title-lg.svelte-1t9noxk"));
+        return questionnaireHeading;
+    }
 }
+
 
 
