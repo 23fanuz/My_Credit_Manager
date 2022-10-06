@@ -91,5 +91,8 @@ public class VerifyIdentityStepDef {
 
         String expectedQuestionnaireHeading = "Please select the correct answers to these questions so we can verify your identity";
         Assert.assertEquals("Heading verification failed",expectedQuestionnaireHeading, verifyIdentityPage.getQuestionnaireHeading().getText());
+
+
+        Driver.closeDriver();
     }
 }

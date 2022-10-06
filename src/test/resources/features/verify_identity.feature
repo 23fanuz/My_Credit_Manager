@@ -1,6 +1,6 @@
 Feature: Identity Verification
 
-  @wip
+  @test1
   Scenario Template:Initial identity verification with valid credentials
     Given user is on My Credit Manager homepage
     When user inputs first name "<First Name>"
